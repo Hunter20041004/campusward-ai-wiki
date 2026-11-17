@@ -1,0 +1,281 @@
+[
+  {
+    "id": "S1",
+    "title": "Campusward README",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/README.md",
+    "kind": "product-readme",
+    "filename": "S1-readme.md",
+    "expected": [
+      "# Campusward",
+      "npm run verify"
+    ],
+    "notes": [
+      "Campusward 是非政大官方的選課排課工具，支援搜課、衝堂提醒、備案和復原",
+      "README 記載 115-1 快照共 2,932 門，AI 使用學生自己的 Gemini 金鑰",
+      "修課紀錄不送 AI，另有課綱問答、截圖匯入與畢業缺口功能"
+    ],
+    "cautions": [
+      "固定版本的產品自述，不等於每項功能已在本次實測",
+      "2,932 是此版本 README 的筆數，不代表未來學期或即時開課總數"
+    ]
+  },
+  {
+    "id": "S2",
+    "title": "Campusward 設計文件（含後續修訂）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/docs/specs/2026-10-28-campusward-nccu-design.md",
+    "kind": "product-spec",
+    "filename": "S2-design.md",
+    "expected": [
+      "## 6.",
+      "### 8.4 課程問答"
+    ],
+    "notes": [
+      "設計把 AI 的工作限於理解需求與提出變更，衝堂、鎖定課、學分等由規則檢查",
+      "第 8.4 節規劃建置期取得課綱，本機找相關段落後再問 Gemini",
+      "不是官方選課系統，排課完成仍須由學生到官方系統登記"
+    ],
+    "cautions": [
+      "這是設計與目標，含舊方案及日期修訂，現況需另看程式",
+      "BM25、快取方式、搜尋效能與召回率門檻屬於規格，現有程式可佐證 MiniSearch 文字檢索，本次未重建全語料或重測效能",
+      "第 8.6 節保留舊的職涯上網方案，後文已改為不上網；金額、模型、條款與選課日期都不能直接當成現行事實"
+    ]
+  },
+  {
+    "id": "S3",
+    "title": "小山的搜課與排課方案產生（orb.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/ai/orb.ts",
+    "kind": "product-code",
+    "filename": "S3-orb.ts",
+    "expected": [
+      "export const MAX_CALLS = 2",
+      "export async function planWithAi"
+    ],
+    "notes": [
+      "一次需求最多兩次模型呼叫；第一次需要搜課時，本機先查，再交回第二次模型",
+      "最多採用四組搜尋，每組最多二十門；星期詞會轉成搜尋條件",
+      "此檔回傳變更方案與回答，實際套用另交給引擎與畫面狀態處理"
+    ],
+    "cautions": [
+      "最多兩次只指這個排課函式，不能推論全部 AI 功能或整段對話的總呼叫數",
+      "只讀此檔不能證明套用、備份及復原已完成，也不能說模型找遍全部課程"
+    ]
+  },
+  {
+    "id": "S4",
+    "title": "排課方案的規則檢查（validate.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/ai/validate.ts",
+    "kind": "product-code",
+    "filename": "S4-validate.ts",
+    "expected": [
+      "export function validateSchedule",
+      "valid: violations.length === 0"
+    ],
+    "notes": [
+      "檢查衝堂、資格、非同步上課、學分範圍、實習天數與空堂日",
+      "阻擋問題放在 violations，待人工確認的資格放在 warnings",
+      "valid 只取決於 violations 是否為空，有 warnings 仍可能 valid"
+    ],
+    "cautions": [
+      "此檔是檢查函式，不負責實際套用或自動備份",
+      "可設定的學分與空堂條件要由呼叫端提供，不能說此檔已自動套用所有學校規則",
+      "未知且未鎖定的課程在這個函式會被略過，課程真實性與移除鎖定課仍需其他流程檢查"
+    ]
+  },
+  {
+    "id": "S5",
+    "title": "依課綱回答與引用過濾（answer.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/qa/answer.ts",
+    "kind": "product-code",
+    "filename": "S5-answer.ts",
+    "expected": [
+      "export function parseQaReply",
+      "export async function askSyllabi"
+    ],
+    "notes": [
+      "模型只收到問題與傳入的課綱段落，這個函式沒有傳課表、身分或修課紀錄",
+      "提示要求只依段落回答，缺資料就說課綱沒有寫，課綱文字要當資料而非指令",
+      "回覆以本機欄位規則檢查，引用課號去重後只保留提供過的課號"
+    ],
+    "cautions": [
+      "過濾引用課號不等於逐句查證答案，仍可能錯解、漏引或出現無來源說法",
+      "程式允許空 citations，也可能過濾後變成空陣列，不能保證每次回答都有有效引文",
+      "這個檔案接收已找好的 context，沒有證明上游採用 BM25、向量或哪種搜尋法"
+    ]
+  },
+  {
+    "id": "S6",
+    "title": "Gemini 連線、金鑰與錯誤處理（gemini.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/ai/gemini.ts",
+    "kind": "product-code",
+    "filename": "S6-gemini.ts",
+    "expected": [
+      "export function createGeminiClient",
+      "responseMimeType: 'application/json'"
+    ],
+    "notes": [
+      "金鑰預設放在記憶體，勾選記住才寫這個分頁的 sessionStorage，以標頭送出",
+      "請求指定 JSON 回覆格式，回傳文字再交給各功能的解析器",
+      "錯誤依 reason 與狀態碼分類，另處理安全阻擋、截斷和空回覆"
+    ],
+    "cautions": [
+      "此版本只傳 JSON MIME 類型，沒有傳 JSON Schema，不能說已啟用官方 schema 約束",
+      "錯誤訊息提到免費額度不代表當前價格或每個人的方案，這次沒有查價或實際呼叫模型",
+      "單一用戶端檔案不能證明全站沒有任何個資外送，也未證明年齡確認畫面與流程"
+    ]
+  },
+  {
+    "id": "S7",
+    "title": "Microsoft：Retrieval-augmented generation (RAG) in Azure AI Search",
+    "url": "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview",
+    "kind": "official-documentation",
+    "filename": "S7-microsoft-rag.html",
+    "expected": [
+      "Retrieval-augmented generation",
+      "Classic RAG"
+    ],
+    "notes": [
+      "RAG 先取回相關資料，再交給模型作答；資料整理與檢索品質會影響答案"
+    ],
+    "cautions": [
+      "這是 Azure 的說明，不能據此推論 Campusward 使用 Azure、向量資料庫或已完成同樣的流程",
+      "官方頁面會更新，本機保留的是取得當時的版本"
+    ]
+  },
+  {
+    "id": "S8",
+    "title": "Google Gemini：Structured outputs",
+    "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+    "kind": "official-documentation",
+    "filename": "S8-google-structured-output.html",
+    "expected": [
+      "Structured outputs",
+      "JSON Schema"
+    ],
+    "notes": [
+      "結構化輸出可用 JSON Schema 指定回覆欄位，但仍須由程式檢查值與實際規則"
+    ],
+    "cautions": [
+      "官方文件已轉址到 aistudio.google.com，範例和模型可能持續改版",
+      "格式符合不代表內容正確，且 Campusward 此版本沒有傳 schema，見 S6"
+    ]
+  },
+  {
+    "id": "S9",
+    "title": "AI 動作解析與套用前檢查（changeSet.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/ai/changeSet.ts",
+    "kind": "product-code",
+    "filename": "S9-changeSet.ts",
+    "expected": [
+      "export function applyAiChangeSet",
+      "MAX_CHANGE_ACTIONS = 20"
+    ],
+    "notes": [
+      "AI 只能用列出的動作，無法設定身分資格；每次最多二十個變更",
+      "課號對回課程目錄，部分新增動作允許唯一近似課號修正，移除動作不猜課號",
+      "套用時拒絕移除鎖定課；比較每個方案前後，只阻擋新造成或變嚴重的問題"
+    ],
+    "cautions": [
+      "不是要求舊課表全部合法後才允許任何變更，原本的衝堂可能仍保留",
+      "目前 validatePlan 會傳學分上限，但沒有傳最低學分；不能宣稱這條路徑擋住最低學分不足",
+      "套用與備案細節另見 S12；函式回傳結果不等於畫面已實際操作成功"
+    ]
+  },
+  {
+    "id": "S10",
+    "title": "課綱切段與斷詞（syllabus.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/syllabus.ts",
+    "kind": "product-code",
+    "filename": "S10-syllabus.ts",
+    "expected": [
+      "MAX_PASSAGE_LENGTH = 1000",
+      "export function tokenizeForSearch"
+    ],
+    "notes": [
+      "課綱依課名、簡介、目標、評分、先修與每週內容切段，每段最多一千個字串單位",
+      "中文連續文字切成相鄰兩字，英數以詞為單位，搜尋詞再轉成十六進位"
+    ],
+    "cautions": [
+      "這是文字整理，搜尋本體在 S11，索引建立在 S13",
+      "切段採字串位置，不是模型理解後的語意切段，也不是向量嵌入"
+    ]
+  },
+  {
+    "id": "S11",
+    "title": "課綱本機搜尋（syllabusSearch.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/qa/syllabusSearch.ts",
+    "kind": "product-code",
+    "filename": "S11-syllabusSearch.ts",
+    "expected": [
+      "export function searchSyllabi",
+      "combineWith: 'OR'"
+    ],
+    "notes": [
+      "清理問句首尾的填充詞，再對本機已載入的索引搜尋",
+      "以 OR 合併搜尋條件，預設取前二十個結果，回傳課號、區塊、段落序號與分數"
+    ],
+    "cautions": [
+      "這是 MiniSearch 文字檢索介面，沒有看到向量資料庫或向量嵌入",
+      "取回段落不代表已生成答案，也不證明全部相關段落都能找到"
+    ]
+  },
+  {
+    "id": "S12",
+    "title": "方案批次套用、備案與復原資料（plans.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/plans.ts",
+    "kind": "product-code",
+    "filename": "S12-plans.ts",
+    "expected": [
+      "export function applyChanges",
+      "DEFAULT_AUTO_BACKUP_LIMIT = 5"
+    ],
+    "notes": [
+      "一批變更套用後回傳新狀態與改動前的 undo 狀態",
+      "AI 移除課程時先備案，或一次加入與移除合計三門以上也備案；新建方案不另外備份",
+      "自動備案預設最多五份，超過時先要求確認，再決定是否替換最舊且可替換的備案"
+    ],
+    "cautions": [
+      "引擎提供復原資料，不代表這次已按過網站上的復原按鈕",
+      "備案不是每次新增一門課都產生，undo 與長期保留的方案備案也不同"
+    ]
+  },
+  {
+    "id": "S13",
+    "title": "課綱 MiniSearch 索引建立與載入（syllabusIndex.ts）",
+    "url": "https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/qa/syllabusIndex.ts",
+    "kind": "product-code",
+    "filename": "S13-syllabusIndex.ts",
+    "expected": [
+      "import MiniSearch",
+      "export function buildSyllabusArtifacts"
+    ],
+    "notes": [
+      "程式直接建立 MiniSearch 文字索引，使用 S10 的斷詞規則，在瀏覽器載入後搜尋",
+      "索引收課名、簡介、目標、評分、先修與每週主題；沒有週次表時的每週進度原文只留全文檔",
+      "課名與評分保留常見詞，其他文字欄位會剔除高頻詞"
+    ],
+    "cautions": [
+      "這些程式能佐證目前採文字檢索，不是向量資料庫",
+      "檔頭舊註解寫常見詞門檻 2%，實際常數為 0.004，即 0.4%；敘述要以程式為準",
+      "大小與速度註解是原作者歷史量測，本次沒有重建全語料或重測效能"
+    ]
+  },
+  {
+    "id": "S14",
+    "title": "Lewis 等人：Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks（2020，v4）",
+    "url": "https://arxiv.org/abs/2005.11401",
+    "download_url": "https://arxiv.org/pdf/2005.11401v4",
+    "kind": "research-paper",
+    "filename": "S14-rag-paper.pdf",
+    "encoding": "latin-1",
+    "expected": [
+      "%PDF-"
+    ],
+    "notes": [
+      "第 2 節把檢索與生成串起來：先依問題找文字段落，再連同問題交給模型產生回答"
+    ],
+    "cautions": [
+      "論文使用 DPR、BART 與維基百科向量索引，不代表 Campusward 使用同一套架構",
+      "這裡引用一般原理，Campusward 實作仍以 S5、S10、S11、S13 為準"
+    ]
+  }
+]

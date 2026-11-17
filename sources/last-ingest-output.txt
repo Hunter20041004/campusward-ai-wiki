@@ -1,0 +1,30 @@
+S1 HTTP 200 1788 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/README.md
+S2 HTTP 200 28553 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/docs/specs/2026-10-28-campusward-nccu-design.md
+S3 HTTP 200 4049 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/ai/orb.ts
+S4 HTTP 200 4948 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/ai/validate.ts
+S5 HTTP 200 2443 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/qa/answer.ts
+S6 HTTP 200 6499 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/ai/gemini.ts
+S7 HTTP 200 67880 bytes https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview
+S8 HTTP 200 105264 bytes https://aistudio.google.com/docs/structured-output
+S9 HTTP 200 12697 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/ai/changeSet.ts
+S10 HTTP 200 3284 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/syllabus.ts
+S11 HTTP 200 1648 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/qa/syllabusSearch.ts
+S12 HTTP 200 15263 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/packages/engine/src/plans.ts
+S13 HTTP 200 5053 bytes https://raw.githubusercontent.com/Hunter20041004/campusward-nccu/5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49/apps/web/src/qa/syllabusIndex.ts
+S14 HTTP 200 885323 bytes https://arxiv.org/pdf/2005.11401v4
+INGEST PASS: 14 sources
+S1 OK 1788 bytes sha256=701c04a170d903b98ccab441695bc5296fc3049df5f90dd622729047f21c7c88
+S2 OK 28553 bytes sha256=bcb730e3fc6fa8b8fba116f3409254bb793aee6e76708abbd26ccb3bf20386c3
+S3 OK 4049 bytes sha256=c2d45c65aeb4e35f707b44957f82d90035b92c5b1fe63112b5d9b0e29c7dfb93
+S4 OK 4948 bytes sha256=ca4a09f507fd89da059a9d459092ffac71e6123837ce16e0bc7d83223d74134e
+S5 OK 2443 bytes sha256=5f3937c97ab1fedfe9392050c6ac2977748ce23eab95a5bc15598e0e8fff0e9c
+S6 OK 6499 bytes sha256=3aae9a0caa45ad0bec3835f041814367b39108486e9c58b2680f8e8a1e41db8f
+S7 OK 67880 bytes sha256=e6cd10e381268de414ac5fbef8c392efc73b1738d01693e3143142c5b2b57014
+S8 OK 105264 bytes sha256=e7e580c38cd7cc4462cfbdbbd26a9f42a3f1e9241566f2983bcce486c7c56085
+S9 OK 12697 bytes sha256=43025d154944da7581583b2455c19f6eb2d8f629a4eddaddfc74e0354d3db250
+S10 OK 3284 bytes sha256=40fa06b9d96c5fca8e0bef7b4fd561aa888ee015cd0f639d8bc87a4c8dfabc0c
+S11 OK 1648 bytes sha256=bed4a127126563a64347e650557e5f4289d07a829e41884a6c172b0ce92276ca
+S12 OK 15263 bytes sha256=e7be2fb01b0bf4d5cac08cdbebaffdca5b45a2853be95ecdf901f9fb941f1536
+S13 OK 5053 bytes sha256=4e36a04790f2972fbf0526c93bfd88ab53dccd72897b7e1395b9729e85b1db6e
+S14 OK 885323 bytes sha256=23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233
+VERIFY PASS: 14 sources

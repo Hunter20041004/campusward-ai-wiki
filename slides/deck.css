@@ -1,0 +1,93 @@
+body:has(#deck) main { padding: 0; }
+body { min-height: 100vh; }
+#deck { max-width: 1120px; padding: 2.25rem 2rem 8rem; }
+.slide { min-height: min(660px, calc(100svh - 220px)); padding: 1.75rem 2.5rem 1.25rem; border-radius: 1rem; background: var(--paper); box-shadow: var(--shadow); scroll-margin-top: 1.5rem; }
+.slide-number { font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--muted); margin: 0 0 1.15rem; }
+.slide h1 { font-size: clamp(1.65rem, 2.8vw, 2.25rem); max-width: 30ch; margin-bottom: 1rem; }
+.slide h1:focus { outline: none; }
+.slide-lead { font-size: 1.15rem; color: #405b84; max-width: 46rem; margin-bottom: 1.5rem; line-height: 1.8; }
+.slide-body { max-width: 47rem; }
+.slide-body p { font-size: 1rem; margin-bottom: .85rem; }
+.slide-sources { margin-top: 1.75rem; }
+.slide-sources summary { font-size: .85rem; color: var(--muted); font-weight: 400; }
+.slide-sources ul { margin-top: .25rem; display: flex; flex-wrap: wrap; column-gap: 2rem; }
+.slide-sources li { margin: .15rem 0; }
+.slide-sources p { font-size: .8rem; }
+.slide-flow { grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); margin-top: 2rem; }
+.slide-flow h3 { font-size: 1rem; }
+.slide-flow p { font-size: .9rem; }
+.deck-controls { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10; max-width: none; background: var(--paper); padding: .85rem 1.5rem max(.85rem, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: center; gap: .75rem; box-shadow: 0 -5px 20px #23324a05; }
+.deck-controls button { font-size: .9rem; }
+#page-status { min-width: 4.5rem; text-align: center; font-size: .85rem; font-variant-numeric: tabular-nums; color: var(--muted); }
+#overview { margin-left: 1.5rem; }
+.is-overview { display: grid; gap: 2.5rem; }
+.is-overview .slide { min-height: 0; }
+.deck-loading { min-height: 30vh; display: flex; align-items: center; justify-content: center; color: var(--muted); }
+.teaching-demo { margin: 1.25rem 0; }
+.demo-notice { color: var(--muted); font-size: .8rem; padding: .65rem .85rem; background: var(--blue-wash); border-radius: .5rem; }
+.demo-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; align-items: start; margin: 1.25rem 0; }
+.demo-settings h3 { margin: 0 0 .75rem; }
+.fixed-course { font-size: .9rem; }
+.demo-settings > label:not(.checkbox-label) { display: block; font-size: .85rem; margin-bottom: .35rem; }
+.demo-settings select { font-size: .85rem; padding-inline: .65rem; }
+.checkbox-label { display: flex; min-height: 48px; gap: .65rem; align-items: center; font-size: .9rem; cursor: pointer; margin: .6rem 0; }
+.demo-settings button { width: 100%; }
+.demo-timetable { table-layout: fixed; margin: 0; font-size: .8rem; }
+.demo-timetable caption { font-size: .75rem; line-height: 1.7; }
+.demo-timetable th:first-child { width: 18%; }
+.demo-timetable th, .demo-timetable td { padding: .55rem; }
+.demo-timetable td { height: 67px; background: #edf1f5; border: 1px solid var(--line); }
+.demo-timetable .conflict-cell { background: var(--coral-wash); }
+.demo-timetable .free-day-cell { background: #e5efeb; }
+.course-block { display: block; padding: .3rem; background: #dbe4f0; color: #344c72; border-radius: .3rem; font-size: .75rem; line-height: 1.5; }
+.course-block.candidate { margin-top: .2rem; background: #e9e0cb; color: #66502d; }
+.conflict-cell .course-block { color: var(--coral-ink); background: #f5d7d2; }
+.cell-note { display: block; color: var(--muted); font-size: .7rem; margin-top: .3rem; line-height: 1.5; }
+.conflict-cell .cell-note { color: var(--coral-ink); font-weight: 600; }
+.empty-slot { color: var(--muted); }
+.demo-result, .quiz-feedback { min-height: 56px; padding: .9rem 1.1rem; background: var(--blue-wash); border-radius: .625rem; font-size: .9rem; }
+.demo-result p, .quiz-feedback p { margin: .35rem 0 0; }
+.demo-result.success, .quiz-feedback.success { background: var(--mint); color: #24594f; }
+.demo-result.error, .quiz-feedback.error { background: var(--coral-wash); color: var(--coral-ink); }
+.demo-limit { font-size: .75rem; }
+.quiz { margin: 1.5rem 0; padding: 0; border: 0; min-width: 0; }
+.quiz legend { font-size: 1rem; font-weight: 600; margin-bottom: .85rem; padding: 0; }
+.quiz-choices { display: grid; gap: .65rem; }
+.quiz-choice { justify-content: flex-start; text-align: left; padding: .85rem 1rem; font-size: .95rem; }
+.quiz-choice.selected-correct { border-color: #477d6f; background: var(--mint); color: #24594f; }
+.quiz-choice.selected-wrong { border-color: #b36d68; background: var(--coral-wash); color: var(--coral-ink); }
+.quiz-feedback { margin-top: 1rem; }
+@media (min-width: 1400px) {
+  #deck { padding-top: 3rem; }
+  .slide { padding: 2rem 3rem 1.5rem; }
+}
+@media (max-width: 760px) {
+  #deck { padding: 1.5rem 1rem 8.5rem; }
+  .slide { min-height: 0; padding: 1.4rem 1.1rem 1rem; }
+  .slide h1 { font-size: 1.65rem; }
+  .slide-lead { font-size: 1.05rem; }
+  .slide-body p { font-size: .95rem; }
+  .slide-number { margin-bottom: .85rem; }
+  .slide-flow { grid-template-columns: 1fr; }
+  .demo-layout { grid-template-columns: 1fr; gap: 1.25rem; }
+  .demo-timetable th, .demo-timetable td { padding: .45rem; }
+  .deck-controls { gap: .45rem; padding-inline: .75rem; flex-wrap: wrap; }
+  .deck-controls button { padding: .5rem .65rem; font-size: .8rem; }
+  #page-status { min-width: 3.25rem; font-size: .8rem; }
+  #overview { margin-left: .35rem; }
+  .deck-overview #page-status { width: 100%; order: 3; }
+  .is-overview { gap: 1.5rem; }
+}
+@media print {
+  #deck { max-width: none; padding: 0; }
+  #slide-host { display: block; }
+  .slide, .slide[hidden] { display: block !important; padding: 1rem 0; min-height: 0; box-shadow: none; border-radius: 0; break-after: page; }
+  .slide:last-child { break-after: auto; }
+  .deck-controls { display: none; }
+  .slide-sources > :not(summary) { display: block !important; }
+  .slide-sources { content-visibility: visible; }
+  .slide-sources::details-content { content-visibility: visible; display: block; }
+  .demo-layout { grid-template-columns: 1fr 1fr; }
+  .quiz, .teaching-demo { break-inside: avoid; }
+  .slide h1 { font-size: 22pt; }
+}

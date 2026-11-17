@@ -1,0 +1,317 @@
+[
+  {
+    "slide": "start",
+    "query": [
+      "AI",
+      "排課"
+    ],
+    "hits": [
+      {
+        "wiki": "overview",
+        "score": 16
+      },
+      {
+        "wiki": "search",
+        "score": 4
+      },
+      {
+        "wiki": "planning",
+        "score": 3
+      }
+    ],
+    "used": [
+      "overview"
+    ],
+    "claims": [
+      "C1",
+      "C3"
+    ]
+  },
+  {
+    "slide": "request",
+    "query": [
+      "入門",
+      "規則"
+    ],
+    "hits": [
+      {
+        "wiki": "validation",
+        "score": 6
+      },
+      {
+        "wiki": "overview",
+        "score": 4
+      }
+    ],
+    "used": [
+      "overview",
+      "validation"
+    ],
+    "claims": [
+      "C3",
+      "C4",
+      "C5"
+    ]
+  },
+  {
+    "slide": "search",
+    "query": [
+      "搜課",
+      "搜尋"
+    ],
+    "hits": [
+      {
+        "wiki": "search",
+        "score": 14
+      },
+      {
+        "wiki": "overview",
+        "score": 2
+      }
+    ],
+    "used": [
+      "search"
+    ],
+    "claims": [
+      "C2",
+      "C3"
+    ]
+  },
+  {
+    "slide": "proposal",
+    "query": [
+      "JSON",
+      "格式"
+    ],
+    "hits": [
+      {
+        "wiki": "planning",
+        "score": 10
+      },
+      {
+        "wiki": "syllabus",
+        "score": 1
+      }
+    ],
+    "used": [
+      "planning"
+    ],
+    "claims": [
+      "C3",
+      "C9"
+    ]
+  },
+  {
+    "slide": "rules",
+    "query": [
+      "檢查",
+      "規則"
+    ],
+    "hits": [
+      {
+        "wiki": "validation",
+        "score": 18
+      },
+      {
+        "wiki": "boundaries",
+        "score": 3
+      },
+      {
+        "wiki": "overview",
+        "score": 3
+      }
+    ],
+    "used": [
+      "validation",
+      "planning"
+    ],
+    "claims": [
+      "C4",
+      "C5"
+    ],
+    "followups": [
+      {
+        "query": [
+          "把建議變成能檢查的方案"
+        ],
+        "hits": [
+          {
+            "wiki": "planning",
+            "score": 3
+          }
+        ],
+        "used": "planning",
+        "reason": "補查對應條目完整上下文，不只採前三名"
+      }
+    ]
+  },
+  {
+    "slide": "try-it",
+    "query": [
+      "衝堂",
+      "空堂"
+    ],
+    "hits": [
+      {
+        "wiki": "validation",
+        "score": 8
+      },
+      {
+        "wiki": "overview",
+        "score": 1
+      }
+    ],
+    "used": [
+      "validation"
+    ],
+    "claims": [
+      "C4"
+    ]
+  },
+  {
+    "slide": "rag",
+    "query": [
+      "RAG",
+      "課綱"
+    ],
+    "hits": [
+      {
+        "wiki": "syllabus",
+        "score": 17
+      },
+      {
+        "wiki": "boundaries",
+        "score": 3
+      }
+    ],
+    "used": [
+      "syllabus"
+    ],
+    "claims": [
+      "C6",
+      "C8",
+      "C12"
+    ]
+  },
+  {
+    "slide": "citations",
+    "query": [
+      "引用",
+      "查證"
+    ],
+    "hits": [
+      {
+        "wiki": "syllabus",
+        "score": 12
+      },
+      {
+        "wiki": "boundaries",
+        "score": 3
+      }
+    ],
+    "used": [
+      "syllabus",
+      "boundaries"
+    ],
+    "claims": [
+      "C7"
+    ]
+  },
+  {
+    "slide": "data",
+    "query": [
+      "隱私",
+      "金鑰"
+    ],
+    "hits": [
+      {
+        "wiki": "boundaries",
+        "score": 11
+      }
+    ],
+    "used": [
+      "boundaries"
+    ],
+    "claims": [
+      "C10",
+      "C11"
+    ]
+  },
+  {
+    "slide": "quiz",
+    "query": [
+      "檢查",
+      "官方"
+    ],
+    "hits": [
+      {
+        "wiki": "validation",
+        "score": 13
+      },
+      {
+        "wiki": "boundaries",
+        "score": 6
+      },
+      {
+        "wiki": "planning",
+        "score": 5
+      }
+    ],
+    "used": [
+      "validation",
+      "boundaries"
+    ],
+    "claims": [
+      "C1",
+      "C4",
+      "C7"
+    ]
+  },
+  {
+    "slide": "takeaway",
+    "query": [
+      "AI",
+      "限制"
+    ],
+    "hits": [
+      {
+        "wiki": "overview",
+        "score": 10
+      },
+      {
+        "wiki": "search",
+        "score": 4
+      },
+      {
+        "wiki": "boundaries",
+        "score": 3
+      }
+    ],
+    "used": [
+      "overview",
+      "boundaries",
+      "validation"
+    ],
+    "claims": [
+      "C1",
+      "C3",
+      "C4",
+      "C7"
+    ],
+    "followups": [
+      {
+        "query": [
+          "檢查通過，才考慮套用"
+        ],
+        "hits": [
+          {
+            "wiki": "validation",
+            "score": 3
+          }
+        ],
+        "used": "validation",
+        "reason": "補查對應條目完整上下文，不只採前三名"
+      }
+    ]
+  }
+]

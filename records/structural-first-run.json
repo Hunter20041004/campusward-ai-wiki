@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-11-17T07:50:43.459617+00:00",
+  "provenance": "依本次工具實際輸出整理，非補寫當時機器日誌",
+  "command": "python3 scripts/build.py",
+  "exit_code": 1,
+  "output": "takeaway claim C4 absent from cited Wiki",
+  "cause": "最後一張提到規則檢查，引用只有overview和boundaries，缺validation條目",
+  "fix": "增加validation引用，保留原檢查，不放寬規則",
+  "workflow_change": "來源→Wiki→投影片的引用完整性先檢查，再產生HTML，這個前置檢查在首次執行即擋下缺漏"
+}

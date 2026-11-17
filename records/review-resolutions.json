@@ -1,0 +1,31 @@
+{
+  "recorded_at": "2026-11-17T08:00:45.242573+00:00",
+  "reviews": [
+    "獨立來源核對",
+    "獨立作業與語氣核對",
+    "主模型畫面與最終裁決"
+  ],
+  "findings": [
+    {
+      "issue": "補查原本僅寫標題，沒有執行第二次查詢",
+      "resolution": "改成呼叫query_wiki並保存hits與score，核對採用條目確實命中",
+      "limit": "作者仍決定採用哪些條目，不是搜尋自動生成教材"
+    },
+    {
+      "issue": "資格不明可能只是warning",
+      "resolution": "C4與validation段落明說待確認列提醒"
+    },
+    {
+      "issue": "檢查報告還沒生成時來源頁有暫時壞連結",
+      "resolution": "實際產生browser-check與checks報告，最後連結檢查再驗證"
+    },
+    {
+      "issue": "skip-link hover深底深字",
+      "resolution": "新增白色hover樣式，實測focus與hover後驗收"
+    },
+    {
+      "issue": "首頁h2/h3比例偏近",
+      "resolution": "主模型依畫面判為非必要，不另改版型"
+    }
+  ]
+}
