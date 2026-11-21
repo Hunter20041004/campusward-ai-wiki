@@ -1,8 +1,13 @@
 {
-  "at": "2026-11-17T07:58:07.585Z",
+  "at": "2026-11-21T12:17:41.724Z",
   "status": "PASS",
   "target": "http://localhost:4180/",
   "checks": [
+    {
+      "name": "鍵盤跳轉對比",
+      "status": "PASS",
+      "detail": "focus與hover仍為白字深底，對比12.9:1"
+    },
     {
       "name": "Wiki 搜尋",
       "status": "PASS",
@@ -12,6 +17,11 @@
       "name": "換頁與網址",
       "status": "PASS",
       "detail": "上一頁/下一頁、Home/End與hash定位符合頁面"
+    },
+    {
+      "name": "版本標註與證據",
+      "status": "PASS",
+      "detail": "公開版搜課、本機版範例、衝堂與復原皆可讀，Wiki 連結可取得更新紀錄"
     },
     {
       "name": "固定示意三種結果",
@@ -34,6 +44,11 @@
       "detail": "390px無橫向溢出，示意仍可操作"
     },
     {
+      "name": "原作業紀錄",
+      "status": "PASS",
+      "detail": "11 月 17 日建置紀錄保留原本 12 個重點"
+    },
+    {
       "name": "網頁執行",
       "status": "PASS",
       "detail": "沒有未處理的JavaScript錯誤"
@@ -41,8 +56,8 @@
   ],
   "isolation": {
     "executable": "~/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
-    "profile": "campusward-wiki-test-LeArvJ",
-    "pid": 51045
+    "profile": "campusward-wiki-test-Y6bmE8",
+    "pid": 74628
   },
   "limits": "只實測本教材的固定互動與呈現，不代表已呼叫或測試原產品的Gemini服務",
   "cleanup": {

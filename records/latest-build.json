@@ -1,18 +1,19 @@
 {
-  "at": "2026-11-17T07:57:44.651925+00:00",
+  "at": "2026-11-21T12:18:13.494508+00:00",
+  "version": "2026-11-21",
   "status": "PASS",
   "sources": 14,
   "wiki_entries": 6,
-  "claims": 12,
+  "claims": 14,
   "slides": 11,
   "retrieval_queries": 11,
   "source_snapshot": "5d0a4637d66392a3155a4f7a80b7b9eaebfc5b49",
-  "content_sha256": "4410057bcf1139e2762eee43d037bbdceaf700df176b16b8cdb8b7629b188bdf",
+  "content_sha256": "beef0ad57ede639e6863711b4242b4845c38cb25b1b104c827fccc225bf650e6",
   "checks": [
     "來源編號存在",
     "條目引用存在",
     "投影片重點在引用Wiki內",
-    "先有語意核對紀錄再建置"
+    "原作業語意核對紀錄與本機新版核對紀錄存在"
   ],
   "limits": "這些檢查驗證資料關係，不是自動逐句事實查證；本次未呼叫產品Gemini API"
 }

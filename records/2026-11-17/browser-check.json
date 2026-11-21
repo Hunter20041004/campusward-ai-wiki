@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-17T07:58:07.585Z",
+  "status": "PASS",
+  "target": "http://localhost:4180/",
+  "checks": [
+    {
+      "name": "Wiki 搜尋",
+      "status": "PASS",
+      "detail": "6篇；RAG命中1篇；查無結果提示；清除恢復"
+    },
+    {
+      "name": "換頁與網址",
+      "status": "PASS",
+      "detail": "上一頁/下一頁、Home/End與hash定位符合頁面"
+    },
+    {
+      "name": "固定示意三種結果",
+      "status": "PASS",
+      "detail": "B1衝堂拒絕；B2通過；B2加週三空堂拒絕"
+    },
+    {
+      "name": "小測驗",
+      "status": "PASS",
+      "detail": "錯誤與正確選項都顯示原因"
+    },
+    {
+      "name": "展開與列印",
+      "status": "PASS",
+      "detail": "全部展開11頁；回單頁1頁；列印11頁"
+    },
+    {
+      "name": "手機11頁",
+      "status": "PASS",
+      "detail": "390px無橫向溢出，示意仍可操作"
+    },
+    {
+      "name": "網頁執行",
+      "status": "PASS",
+      "detail": "沒有未處理的JavaScript錯誤"
+    }
+  ],
+  "isolation": {
+    "executable": "~/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "profile": "campusward-wiki-test-LeArvJ",
+    "pid": 51045
+  },
+  "limits": "只實測本教材的固定互動與呈現，不代表已呼叫或測試原產品的Gemini服務",
+  "cleanup": {
+    "test_browser_exited": true,
+    "profile_removed": true
+  }
+}
